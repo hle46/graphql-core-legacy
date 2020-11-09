@@ -6,12 +6,12 @@ import re
 
 _version_re = re.compile(r"VERSION\s+=\s+(.*)")
 
-with open("graphql/__init__.py", "rb") as f:
+with open("graphql2/__init__.py", "rb") as f:
     version = ast.literal_eval(_version_re.search(f.read().decode("utf-8")).group(1))
 
 path_copy = sys.path[:]
 
-sys.path.append("graphql")
+sys.path.append("graphql2")
 try:
     from pyutils.version import get_version
 
@@ -38,7 +38,7 @@ tests_requires = [
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ["graphql", "-vrsx"]
+        self.test_args = ["graphql2", "-vrsx"]
         self.test_suite = True
 
     def run_tests(self):
@@ -50,7 +50,7 @@ class PyTest(TestCommand):
 
 
 setup(
-    name="graphql-core",
+    name="graphql-core2",
     version=version,
     description="GraphQL implementation for Python",
     long_description=open("README.md").read(),
@@ -82,5 +82,5 @@ setup(
     tests_require=tests_requires,
     cmdclass={"test": PyTest},
     extras_require={"gevent": ["gevent>=1.1"], "test": tests_requires},
-    package_data={"graphql": ["py.typed"]},
+    package_data={"graphql2": ["py.typed"]},
 )
