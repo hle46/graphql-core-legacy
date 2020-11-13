@@ -50,7 +50,7 @@ class PyTest(TestCommand):
 
 
 setup(
-    name="graphql-core",
+    name="graphql-core2",
     version=version,
     description="GraphQL implementation for Python",
     long_description=open("README.md").read(),
